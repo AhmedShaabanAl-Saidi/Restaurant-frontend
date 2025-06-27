@@ -44,7 +44,7 @@
 <!-- Main Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary text-capitalize py-3 shadow-sm text-dark fw-bold">
     <div class="container">
-        <div class="navbar-logo d-flex align-items-center gap-2">
+        <div class="navbar-logo d-flex align-items-center gap-2 cursor-pointer" routerLink="/home">
             <img src="./img/logo.png" alt="logo">
             <a class="navbar-brand fs-3">Bistro Bliss</a>
         </div>
@@ -54,26 +54,26 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav m-auto mb-2 mb-lg-0 gap-3 ">
+            <ul class="navbar-nav m-auto mb-2 mb-lg-0 gap-4">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page">Home</a>
+                    <a class="nav-link" routerLink="/home" routerLinkActive="bg-body-secondary rounded-pill px-4">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">About</a>
+                    <a class="nav-link" routerLink="/about" routerLinkActive="bg-body-secondary rounded-pill px-4">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Menu</a>
+                    <a class="nav-link" routerLink="/menu" routerLinkActive="bg-body-secondary rounded-pill px-4">Menu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Pages</a>
+                    <a class="nav-link" routerLink="/blog" routerLinkActive="bg-body-secondary rounded-pill px-4">blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Contact</a>
+                    <a class="nav-link" routerLink="/contact" routerLinkActive="bg-body-secondary rounded-pill px-4">Contact</a>
                 </li>
             </ul>
 
             <div class="book-table">
-                <a class="btn btn-outline-dark border-2 rounded-pill">Book a Table</a>
+                <a class="btn btn-outline-dark border-2 rounded-pill" routerLink="/book" routerLinkActive="bg-black text-white">Book a Table</a>
             </div>
         </div>
     </div>

@@ -24,3 +24,11 @@ a {
 .social-icon:hover {
     background-color: #6c6c6c;
 }
+
+.nav-link {
+    transition: all 0.3s ease;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

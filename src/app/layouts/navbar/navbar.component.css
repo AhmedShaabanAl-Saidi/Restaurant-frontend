@@ -24,3 +24,7 @@
     font-family: "Playfair Display", serif !important;
     font-style: italic;
 }
+
+.navbar .nav-link{
+    padding-block: 4px !important;
+}
