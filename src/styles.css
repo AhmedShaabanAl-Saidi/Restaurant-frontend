@@ -7,3 +7,20 @@ span,
 a {
     font-family: initial !important;
 }
+
+.social-icon {
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 50%;
+    background-color: #5c5c5c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    font-size: .875rem;
+}
+
+.social-icon:hover {
+    background-color: #6c6c6c;
+}

@@ -1,0 +1,48 @@
+.footer {
+    background-color: #474747;
+}
+
+.footer-brand a {
+    text-decoration: none;
+    color: #fff;
+    font-family: "Playfair Display", serif !important;
+    font-style: italic;
+}
+
+.footer-text {
+    color: #6c6c6c;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: #6c6c6c !important;
+    transition: all 0.5s ease;
+}
+
+.footer ul li a:hover {
+    cursor: pointer;
+    color: #fff !important;
+}
+
+.footer .social-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #5c5c5c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+    font-size: 14px;
+}
+
+.footer .social-icon:hover {
+    background-color: #6c6c6c;
+}
+
+.footer-imgs img {
+    height: 135px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
