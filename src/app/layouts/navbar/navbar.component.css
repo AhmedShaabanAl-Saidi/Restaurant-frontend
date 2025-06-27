@@ -35,3 +35,9 @@
         font-size: .625rem;
     }
 }
+
+.navbar-brand{
+    color: rgba(33, 37, 41, 0.75);
+    font-family: "Playfair Display", serif !important;
+    font-style: italic;
+}
