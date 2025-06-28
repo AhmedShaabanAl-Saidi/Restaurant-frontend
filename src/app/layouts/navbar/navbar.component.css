@@ -7,6 +7,16 @@
     font-size: .875rem;
 }
 
+@media (max-width: 991px) {
+    .navbar-nav {
+        margin-top: 1.25rem !important;
+    }
+
+    .book-table a {
+        width: 100%;
+    }
+}
+
 @media (max-width: 410px) {
     .top-navbar .small-text {
         font-size: .75rem;
@@ -19,12 +29,13 @@
     }
 }
 
-.navbar-brand{
+.navbar-brand {
     color: rgba(33, 37, 41, 0.75);
     font-family: "Playfair Display", serif !important;
     font-style: italic;
 }
 
-.navbar .nav-link{
-    padding-block: 4px !important;
+.navbar .nav-link {
+    padding-block: .25rem !important;
+    width: fit-content;
 }
