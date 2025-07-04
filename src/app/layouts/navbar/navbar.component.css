@@ -12,7 +12,9 @@
         margin-top: 1.25rem !important;
     }
 
-    .book-table a {
+    .book-table a,
+    .login a,
+    .register a {
         width: 100%;
     }
 }
