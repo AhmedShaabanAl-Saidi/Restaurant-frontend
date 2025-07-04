@@ -14,7 +14,8 @@
 
     .book-table a,
     .login a,
-    .register a {
+    .register a ,
+    .logout a{
         width: 100%;
     }
 }
