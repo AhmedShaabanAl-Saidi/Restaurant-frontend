@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../core/services/auth/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,7 @@ import { AuthService } from '../../core/services/auth/auth.service';
 export class RegisterComponent {
   isLoading: boolean = false;
   private readonly authService = inject(AuthService);
+  private readonly toastrService=inject(ToastrService)
 
   registerForm: FormGroup = new FormGroup(
     {
@@ -57,6 +59,7 @@ export class RegisterComponent {
       this.authService.sentRegisterData(this.registerForm.value).subscribe({
         next: (res) => {
           if (res.message === 'success') {
+            this.toastrService.success('You have registered successfully!', 'Bistro Team');
             this.registerForm.reset();
           }
           this.isLoading = false;

@@ -3,6 +3,7 @@
         "ahmedshaaban",
         "fontawesome",
         "Forgetpassword",
-        "prerender"
+        "prerender",
+        "toastr"
     ]
 }
