@@ -16,6 +16,7 @@ import { AuthService } from '../../core/services/auth/auth.service';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
+  isLoading: boolean = false;
   private readonly authService = inject(AuthService);
 
   registerForm: FormGroup = new FormGroup(
@@ -52,14 +53,17 @@ export class RegisterComponent {
 
   submitForm(): void {
     if (this.registerForm.valid) {
+      this.isLoading = true;
       this.authService.sentRegisterData(this.registerForm.value).subscribe({
         next: (res) => {
           if (res.message === 'success') {
             this.registerForm.reset();
           }
+          this.isLoading = false;
         },
         error: (error) => {
           console.error(error);
+          this.isLoading = false;
         },
       });
     }

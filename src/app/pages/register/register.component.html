@@ -131,11 +131,13 @@
 
             <div class="pb-2">
               <button
-                [disabled]="registerForm.invalid"
+                [disabled]="registerForm.invalid || isLoading"
                 type="submit"
                 class="btn btn-dark w-100 font-weight-bold mt-2"
               >
-                Submit
+                Submit @if (isLoading) {
+                <span><i class="fas fa-spin fa-spinner"></i></span>
+                }
               </button>
             </div>
           </form>
