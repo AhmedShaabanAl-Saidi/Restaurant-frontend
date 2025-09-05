@@ -1,118 +1,150 @@
 <div class="register text-capitalize">
-    <div class="container">
-        <div class="row my-5 mx-2 mx-md-0 shadow-lg">
-            <div class="col-md-6 d-none d-md-block bg-dark">
-                <img src="img/login-bg.png" class="w-100" />
+  <div class="container">
+    <div class="row my-5 mx-2 mx-md-0 shadow-lg">
+      <div class="col-md-6 d-none d-md-block bg-dark">
+        <img src="img/login-bg.png" class="w-100" />
+      </div>
+      <div class="col-md-6 bg-white p-5">
+        <h3 class="pb-3">Register Form</h3>
+        <div class="form-style">
+          <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+            <div class="form-group pb-3">
+              <input
+                formControlName="name"
+                type="text"
+                placeholder="Name"
+                class="form-control"
+              />
+
+              @if (registerForm.get('name')?.errors &&
+              registerForm.get('name')?.touched) {
+              <div class="text-danger">
+                @if (registerForm.get('name')?.errors?.['required']) {
+                <p class="p-1 m-0">name is required</p>
+                } @else if (registerForm.get('name')?.errors?.['minlength']) {
+                <p class="p-1 m-0">name min length is : 3</p>
+                } @else if (registerForm.get('name')?.errors?.['maxlength']) {
+                <p class="p-1 m-0">name max length is : 20</p>
+                }
+              </div>
+              }
             </div>
-            <div class="col-md-6 bg-white p-5">
-                <h3 class="pb-3">Register Form</h3>
-                <div class="form-style">
-                    <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
-                        <div class="form-group pb-3">
-                            <input formControlName="name" type="text" placeholder="Name" class="form-control">
 
-                            @if (registerForm.get('name')?.errors && registerForm.get('name')?.touched) {
-                            <div class="text-danger">
-                                @if (registerForm.get('name')?.errors?.['required']) {
-                                <p class="p-1 m-0"> name is required </p>
-                                }
-                                @else if (registerForm.get('name')?.errors?.['minlength']) {
-                                <p class="p-1 m-0"> name min length is : 3 </p>
-                                }
-                                @else if (registerForm.get('name')?.errors?.['maxlength']) {
-                                <p class="p-1 m-0"> name max length is : 20 </p>
-                                }
-                            </div>
-                            }
-                        </div>
+            <div class="form-group pb-3">
+              <input
+                formControlName="email"
+                type="email"
+                placeholder="Email"
+                class="form-control"
+              />
 
-                        <div class="form-group pb-3">
-                            <input formControlName="email" type="email" placeholder="Email" class="form-control">
-
-                            <!-- validation  -->
-                            @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {
-                            <div class="text-danger">
-                                @if (registerForm.get('email')?.errors?.['required']) {
-                                <p class="p-1 m-0"> email is required </p>
-                                }
-                                @else if (registerForm.get('email')?.errors?.['email']) {
-                                <p class="p-1 m-0"> Enter a valid email, e.g., ahmed&#64;gmail.com </p>
-                                }
-                            </div>
-                            }
-                        </div>
-
-                        <div class="form-group pb-3">
-                            <input formControlName="password" type="password" placeholder="Password"
-                                class="form-control">
-
-                            <!-- validation  -->
-                            @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
-                            <div class="text-danger">
-                                @if (registerForm.get('password')?.errors?.['required']) {
-                                <p class="p-1 m-0"> password is required </p>
-                                }
-                                @else if (registerForm.get('password')?.errors?.['pattern']) {
-                                <p class="p-1 m-0"> enter valid password :
-                                    <br>
-                                    1-At least 8 characters long.
-                                    <br>
-                                    2-Contains at least one uppercase letter.
-                                    <br>
-                                    3-Contains at least one lowercase letter.
-                                    <br>
-                                    4-Contains at least one digit.
-                                    <br>
-                                    5-Contains at least one special character. (!&#64;#$%^&*)
-                                </p>
-                                }
-                            </div>
-                            }
-                        </div>
-
-                        <div class="form-group pb-3">
-                            <input formControlName="rePassword" type="password" placeholder="Confirm Password"
-                                class="form-control">
-
-                            <!-- validation  -->
-                            @if (registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched) {
-                            <div class="text-danger">
-                                @if (registerForm.get('rePassword')?.errors?.['required']) {
-                                <p class="p-1 m-0"> rePassword is required </p>
-                                }
-                                @else if (registerForm.get('rePassword')?.errors?.['mismatch']) {
-                                <p class="p-1 m-0"> Passwords do NOT match </p>
-                                }
-                            </div>
-                            }
-                        </div>
-
-                        <div class="form-group pb-3">
-                            <input formControlName="phone" type="tel" placeholder="Phone" class="form-control">
-
-                            <!-- validation  -->
-                            @if (registerForm.get('phone')?.errors && registerForm.get('phone')?.touched) {
-                            <div class="text-danger">
-                                @if (registerForm.get('phone')?.errors?.['required']) {
-                                <p class="p-1 m-0"> phone is required </p>
-                                }
-                                @else if (registerForm.get('phone')?.errors?.['pattern']) {
-                                <p class="p-1 m-0"> enter valid egyptian phone number </p>
-                                }
-                            </div>
-                            }
-                        </div>
-
-                        <div class="pb-2">
-                            <button type="submit" class="btn btn-dark w-100 font-weight-bold mt-2">Submit</button>
-                        </div>
-                    </form>
-                    
-                    <div class="pt-4 text-center">
-                        already have an account? <a routerLink="/login">login</a>
-                    </div>
-                </div>
+              <!-- validation  -->
+              @if (registerForm.get('email')?.errors &&
+              registerForm.get('email')?.touched) {
+              <div class="text-danger">
+                @if (registerForm.get('email')?.errors?.['required']) {
+                <p class="p-1 m-0">email is required</p>
+                } @else if (registerForm.get('email')?.errors?.['email']) {
+                <p class="p-1 m-0">
+                  Enter a valid email, e.g., ahmed&#64;gmail.com
+                </p>
+                }
+              </div>
+              }
             </div>
+
+            <div class="form-group pb-3">
+              <input
+                formControlName="password"
+                type="password"
+                placeholder="Password"
+                class="form-control"
+              />
+
+              <!-- validation  -->
+              @if (registerForm.get('password')?.errors &&
+              registerForm.get('password')?.touched) {
+              <div class="text-danger">
+                @if (registerForm.get('password')?.errors?.['required']) {
+                <p class="p-1 m-0">password is required</p>
+                } @else if (registerForm.get('password')?.errors?.['pattern']) {
+                <p class="p-1 m-0">
+                  enter valid password :
+                  <br />
+                  1-At least 8 characters long.
+                  <br />
+                  2-Contains at least one uppercase letter.
+                  <br />
+                  3-Contains at least one lowercase letter.
+                  <br />
+                  4-Contains at least one digit.
+                  <br />
+                  5-Contains at least one special character. (!&#64;#$%^&*)
+                </p>
+                }
+              </div>
+              }
+            </div>
+
+            <div class="form-group pb-3">
+              <input
+                formControlName="rePassword"
+                type="password"
+                placeholder="Confirm Password"
+                class="form-control"
+              />
+
+              <!-- validation  -->
+              @if (registerForm.get('rePassword')?.errors &&
+              registerForm.get('rePassword')?.touched) {
+              <div class="text-danger">
+                @if (registerForm.get('rePassword')?.errors?.['required']) {
+                <p class="p-1 m-0">rePassword is required</p>
+                } @else if
+                (registerForm.get('rePassword')?.errors?.['mismatch']) {
+                <p class="p-1 m-0">Passwords do NOT match</p>
+                }
+              </div>
+              }
+            </div>
+
+            <div class="form-group pb-3">
+              <input
+                formControlName="phone"
+                type="tel"
+                placeholder="Phone"
+                class="form-control"
+              />
+
+              <!-- validation  -->
+              @if (registerForm.get('phone')?.errors &&
+              registerForm.get('phone')?.touched) {
+              <div class="text-danger">
+                @if (registerForm.get('phone')?.errors?.['required']) {
+                <p class="p-1 m-0">phone is required</p>
+                } @else if (registerForm.get('phone')?.errors?.['pattern']) {
+                <p class="p-1 m-0">enter valid egyptian phone number</p>
+                }
+              </div>
+              }
+            </div>
+
+            <div class="pb-2">
+              <button
+                [disabled]="registerForm.invalid"
+                type="submit"
+                class="btn btn-dark w-100 font-weight-bold mt-2"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+
+          <div class="pt-4 text-center">
+            already have an account? <a routerLink="/login">login</a>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

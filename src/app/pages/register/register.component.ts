@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   AbstractControl,
@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,8 @@ import {
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
+  private readonly authService = inject(AuthService);
+
   registerForm: FormGroup = new FormGroup(
     {
       name: new FormControl(null, [
@@ -38,8 +41,6 @@ export class RegisterComponent {
     { validators: this.checkRePasswordMatch }
   );
 
-  constructor() {}
-
   checkRePasswordMatch(g: AbstractControl) {
     if (g.get('password')?.value === g.get('rePassword')?.value) {
       return null;
@@ -50,6 +51,17 @@ export class RegisterComponent {
   }
 
   submitForm(): void {
-    console.log(this.registerForm.value);
+    if (this.registerForm.valid) {
+      this.authService.sentRegisterData(this.registerForm.value).subscribe({
+        next: (res) => {
+          if (res.message === 'success') {
+            this.registerForm.reset();
+          }
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+    }
   }
 }
