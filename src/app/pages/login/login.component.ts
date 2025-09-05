@@ -1,5 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../core/services/auth/auth.service';
@@ -42,6 +47,8 @@ export class LoginComponent {
           this.isLoading = false;
         },
       });
+    } else {
+      this.loginForm.markAllAsTouched();
     }
   }
 }
