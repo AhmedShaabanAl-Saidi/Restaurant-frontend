@@ -71,8 +71,7 @@ export class RegisterComponent {
           }
           this.isLoading = false;
         },
-        error: (error) => {
-          console.error(error);
+        error: () => {
           this.isLoading = false;
         },
       });
