@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   AbstractControl,
   FormControl,
@@ -19,7 +19,8 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent {
   isLoading: boolean = false;
   private readonly authService = inject(AuthService);
-  private readonly toastrService=inject(ToastrService)
+  private readonly toastrService = inject(ToastrService);
+  private readonly router = inject(Router);
 
   registerForm: FormGroup = new FormGroup(
     {
@@ -59,8 +60,14 @@ export class RegisterComponent {
       this.authService.sentRegisterData(this.registerForm.value).subscribe({
         next: (res) => {
           if (res.message === 'success') {
-            this.toastrService.success('You have registered successfully!', 'Bistro Team');
             this.registerForm.reset();
+
+            this.toastrService.success(
+              'You have registered successfully!',
+              'Bistro Team'
+            );
+
+            this.router.navigate(['/login']);
           }
           this.isLoading = false;
         },
